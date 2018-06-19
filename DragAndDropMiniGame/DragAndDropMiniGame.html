@@ -200,14 +200,15 @@
             }
 
             function checkAnswer() {
-                var tiles = $('#translationList li')
-                
+                var expected = [1, 2, 3, 4, 5]
                 var answer = []
+
+                var tiles = $('#translationList li')                
                 tiles.each((i, e) => { answer.push($(e).data('order')) })
 
                 var btn = $('#validate')
 
-                if(answer.length == 5 && answer.every((val, i, arr) => !i || (val >= arr[i - 1])))
+                if(compareAnswer(expected, answer) && answer.every((val, i, arr) => !i || (val >= arr[i - 1])))
                 {
                     // Correct
                    btn.html('Correct ! :)')
@@ -221,6 +222,19 @@
                     btn.removeClass('normal correct')
                     btn.addClass('wrong')
                 }
+            }
+
+            function compareAnswer(exp, res) {
+                if(exp.length != res.length)
+                    return false;
+                
+                var isCorrect = false;
+                for(var i = 0 ; i < exp.length ; i++)
+                {
+                    isCorrect = (exp[i] == res[i])
+                }
+
+                return isCorrect
             }
         </script>
     </body>
