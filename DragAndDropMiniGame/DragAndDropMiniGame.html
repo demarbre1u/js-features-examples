@@ -79,11 +79,15 @@
                     font-size: 110%
                 }
 
-                #validate {
+                .item:hover {
+                    cursor: move;
+                }
+
+                .btn {
                     display: block;
                     width: 200;
                     margin: auto;
-                    margin-top: 20px;
+                    margin-top: 5px;
                     text-align: center;
                     font-size: 110%;
                     padding: 10px 20px;
@@ -91,13 +95,13 @@
                     outline: none;
                 }
 
-                #validate.normal {
+                .normal {
                     background-color: white;
                     color: #34495e;
                     border: 1px solid #34495e;
                 }
 
-                #validate.normal:hover {
+                .normal:hover {
                     cursor: pointer;
                     background-color: #34495e;
                     color: white;
@@ -105,13 +109,13 @@
                     transition: background-color 300ms, color 300ms;
                 }
 
-                #validate.wrong {
+                .wrong {
                     background-color: white;
                     color: #e74c3c;
                     border: 1px solid #e74c3c;
                 }
 
-                #validate.wrong:hover {
+                .wrong:hover {
                     cursor: pointer;
                     background-color: #e74c3c;
                     color: white;
@@ -119,13 +123,13 @@
                     transition: background-color 300ms, color 300ms;
                 }
 
-                #validate.correct {
+                .correct {
                     background-color: white;
                     color: #2ecc71;
                     border: 1px solid #2ecc71;
                 }
 
-                #validate.correct:hover {
+                .correct:hover {
                     cursor: pointer;
                     background-color: #2ecc71;
                     color: white;
@@ -164,7 +168,9 @@
                 <li class="list-group-item item" data-order="2">jeu</li>
             </ul>
 
-            <button id="validate" class="normal" onclick="checkAnswer()">Confirm answer</button>
+            <button class="btn normal" onclick="resetTiles()">Reset tiles</button>
+
+            <button id="validate" class="btn normal" onclick="checkAnswer()">Confirm answer</button>
 
         </div>
 
@@ -185,6 +191,13 @@
                 })
 
             })
+
+            function resetTiles() {
+                var tiles = $('#translationList li')
+                $('#tileList').append(tiles)
+
+                $('#translationList').empty()
+            }
 
             function checkAnswer() {
                 var tiles = $('#translationList li')
