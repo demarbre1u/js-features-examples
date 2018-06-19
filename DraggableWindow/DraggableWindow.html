@@ -17,9 +17,13 @@
 
     <body>
         <br>
-        <div class="row offset-md-2 col-md-8">
-            <h2>Click on the button to open the draggable window!</h2>
 
+        <div class="offset-md-2 col-md-8">
+                <h2>Click on the button to open the draggable window!</h2>            
+        </div>
+        
+        <div class="row offset-md-2 col-md-8">
+            <br>
             <button class="btn btn-outline-dark" onclick="openDraggable()">Open <i class="fas fa-window-restore"></i></button>
 
             <div id="draggable">
@@ -81,7 +85,9 @@
 
                 display: flex;
                 flex-direction: row;
-                justify-content: space-between
+                justify-content: space-between;
+
+                cursor: move;
             }
 
             #draggable #handle #close:hover {
