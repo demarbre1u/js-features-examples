@@ -12,6 +12,6 @@ This repository contains some feature examples written in Javascript using a num
 
 * __CopyToClipboard__ : copy a value of an input to the clipboard by clicking a button. Uses [ClipboardJS](https://clipboardjs.com/).
 
-* __DraggableWindow__ : opens a draggable window. Uses [JQuery-UI](https://jqueryui.com/).
+* __DraggableWindow__ : open a draggable window. Uses [JQuery-UI](https://jqueryui.com/).
 
 Eventually, more feature examples will be added.
