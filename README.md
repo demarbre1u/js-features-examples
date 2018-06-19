@@ -14,4 +14,6 @@ This repository contains some feature examples written in Javascript using a num
 
 * __DraggableWindow__ : open a draggable window. Uses [JQuery-UI](https://jqueryui.com/).
 
+* __DragAndDropMiniGame__ : a simple mini game showing some drag and drop mechanics. Uses [Sortable](https://rubaxa.github.io/Sortable/).
+
 Eventually, more feature examples will be added.
