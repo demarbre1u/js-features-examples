@@ -8,6 +8,8 @@ Made by myself, Allan Demarbre.
 
 This repository contains some feature examples written in Javascript using a number of libraries.
 
+These examples have been made for the sake of experimenting, and are kept here as they might be useful in the future.
+
 ## List of currently available examples ##
 
 * __CopyToClipboard__ : copy a value of an input to the clipboard by clicking a button. Uses [ClipboardJS](https://clipboardjs.com/).
