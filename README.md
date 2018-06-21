@@ -18,4 +18,6 @@ These examples have been made for the sake of experimenting, and are kept here a
 
 * __DragAndDropMiniGame__ : a simple mini game showing some drag and drop mechanics. Uses [Sortable](https://rubaxa.github.io/Sortable/).
 
+* __SQLiteExample__ : a simple interaction example with a SQLite database. Uses [SQL.js](https://github.com/kripken/sql.js/)
+
 Eventually, more feature examples will be added.
