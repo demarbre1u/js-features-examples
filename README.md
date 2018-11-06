@@ -20,4 +20,6 @@ These examples have been made for the sake of experimenting, and are kept here a
 
 * __SQLiteExample__ : a simple interaction example with a SQLite database. Uses [SQL.js](https://github.com/kripken/sql.js/)
 
+* __FlashcardExample__ : a simple flashcard example using JQuery and CSS3 animations.
+
 Eventually, more feature examples will be added.
