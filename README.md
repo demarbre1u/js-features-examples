@@ -22,6 +22,6 @@ These examples have been made for the sake of experimenting, and are kept here a
 
 * __FlashcardExample__ : a simple flashcard example using JQuery and CSS3 animations.
 
-* __WebcamExample__ : a simple page allowing you to take a photo with your webcam
+* __WebcamExample__ : a simple page allowing you to take photos with your webcam or any video device
 
 Eventually, more feature examples will be added.
