@@ -1,4 +1,4 @@
-# JS Feature Examples #
+# JS Features Examples #
 
 ## Author ##
 
