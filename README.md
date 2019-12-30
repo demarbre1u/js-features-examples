@@ -24,4 +24,6 @@ These examples have been made for the sake of experimenting, and are kept here a
 
 * __WebcamExample__ : a simple page allowing you to take photos with your webcam or any video device
 
+* __StickyMenu__ : a simple page showing how to apply some styles on an element when it becomes sticky
+
 Eventually, more feature examples will be added.
