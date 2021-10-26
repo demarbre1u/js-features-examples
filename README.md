@@ -1,9 +1,5 @@
 # JS Features Examples #
 
-## Author ##
-
-Made by myself, Allan Demarbre.
-
 ## What is this repository for? ##
 
 This repository contains some feature examples written in Javascript using a number of libraries.
@@ -26,4 +22,4 @@ These examples have been made for the sake of experimenting, and are kept here a
 
 * __StickyMenu__ : a simple page showing how to apply some styles on an element when it becomes sticky
 
-Eventually, more feature examples will be added.
+Eventually, more examples will be added.
