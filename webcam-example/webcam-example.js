@@ -1,5 +1,4 @@
-( () => {
-
+(() => {
     var video = document.querySelector("#videoElement")
     var $image = document.querySelector('#capturedimage')
 
@@ -50,5 +49,4 @@
 
     btnCapture.addEventListener('click', getImage)
     btnSave.addEventListener('click', getSave)
-
  })()

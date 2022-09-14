@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag and drop minigame</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #2c3e50;
+        }
+
+        header {
+            position: absolute;
+            width: 100vw;
+            height: 80px;
+            margin: 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            box-shadow: 0px 3px 3px grey;
+        }
+
+        header p {
+            font-size: 25px;
+            padding-left: 30px;
+        }
+
+        #container {
+            position: absolute;
+            top: 80px;
+            width: 100%;
+        }
+
+        #instruction {
+            display: block;
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+
+        #instruction h4 {
+            color: #34495e;
+        }
+
+        #translationList {
+            width: 75%;
+            height: 55px;
+            margin: auto;
+            background-color: #ecf0f1;
+            text-align: left;
+            border: 2px dashed #2c3e50;
+        }
+
+        #tileList {
+            width: 60%;
+            height: 55px;
+            margin: auto;
+            padding: 0;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .item {
+            list-style: none;
+            display: inline-block;
+            padding: 10px;
+            margin: 5px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            box-shadow: 3px 3px 3px grey;
+            font-weight: bold;
+            font-size: 110%
+        }
+
+        .item:hover {
+            cursor: move;
+        }
+
+        .btn {
+            display: block;
+            width: 200;
+            margin: auto;
+            margin-top: 5px;
+            text-align: center;
+            font-size: 110%;
+            padding: 10px 20px;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .normal {
+            background-color: white;
+            color: #34495e;
+            border: 1px solid #34495e;
+        }
+
+        .normal:hover {
+            cursor: pointer;
+            background-color: #34495e;
+            color: white;
+
+            transition: background-color 300ms, color 300ms;
+        }
+
+        .wrong {
+            background-color: white;
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .wrong:hover {
+            cursor: pointer;
+            background-color: #e74c3c;
+            color: white;
+
+            transition: background-color 300ms, color 300ms;
+        }
+
+        .correct {
+            background-color: white;
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .correct:hover {
+            cursor: pointer;
+            background-color: #2ecc71;
+            color: white;
+
+            transition: background-color 300ms, color 300ms;
+        }
+    </style>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <p>Translate</p>
+    </header>
+
+    <div id="container">
+
+        <div id="instruction">
+            <h2>Translate the following sentence in french :</h2>
+            <h4>This game really sucks</h4>
+
+            <br>
+
+            <ul id="translationList" class="list-group">
+            </ul>
+        </div>
+
+        <ul id="tileList" class="list-group">
+            <li class="list-group-item item" data-order="3">est</li>
+            <li class="list-group-item item" data-order="1">Ce</li>
+            <li class="list-group-item item" data-order="5">nul</li>
+            <li class="list-group-item item" data-order="4">vraiment</li>
+            <li class="list-group-item item" data-order="2">jeu</li>
+        </ul>
+
+        <button class="btn normal" onclick="resetTiles()">Reset tiles</button>
+
+        <button id="validate" class="btn normal" onclick="checkAnswer()">Confirm answer</button>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            Sortable.create(tileList, {
+                group: 'tile',
+                animation: 100
+            })
+
+            Sortable.create(translationList, {
+                group: {
+                    name: 'answer',
+                    put: ['tile']
+                },
+                animation: 100,
+            })
+
+        })
+
+        function resetTiles() {
+            var tiles = $('#translationList li')
+            $('#tileList').append(tiles)
+
+            $('#translationList').empty()
+        }
+
+        function checkAnswer() {
+            var expected = [1, 2, 3, 4, 5]
+            var answer = []
+
+            var tiles = $('#translationList li')
+            tiles.each((i, e) => { answer.push($(e).data('order')) })
+
+            var btn = $('#validate')
+
+            if (compareAnswer(expected, answer) && answer.every((val, i, arr) => !i || (val >= arr[i - 1]))) {
+                // Correct
+                btn.html('Correct ! :)')
+                btn.removeClass('normal wrong')
+                btn.addClass('correct')
+            }
+            else {
+                // Wrong
+                btn.html('Wrong... :(')
+                btn.removeClass('normal correct')
+                btn.addClass('wrong')
+            }
+        }
+
+        function compareAnswer(exp, res) {
+            if (exp.length != res.length)
+                return false;
+
+            var isCorrect = false;
+            for (var i = 0; i < exp.length; i++) {
+                isCorrect = (exp[i] == res[i])
+            }
+
+            return isCorrect
+        }
+    </script>
+</body>
+
+</html>
